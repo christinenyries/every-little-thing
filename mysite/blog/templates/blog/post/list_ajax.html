@@ -1,0 +1,12 @@
+{% load blog_tags %}
+
+{% for post in posts %}
+    <div class="post border border-dark rounded mb-4 p-4">
+        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+        {% include "blog/post/tags.html" %}
+        <p class="date">Published on {{ post.publish }}</p>
+        {{ post.body|markdown|truncatewords:30 }}
+    </div>
+{% empty %}
+    <p>Nothing here.</p>
+{% endfor %}

@@ -1,0 +1,64 @@
+{% load blog_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+</head>
+<body>
+    <div id="header">
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'blog:post_list' %}">
+                Every Little Thing
+            </a>
+        </nav>
+    </div>
+    <div id="content" class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-4">
+                {% block content %} {% endblock content %} 
+            </div>
+            <div class="col-lg-2">
+                <div id="sidebar">
+                    <div id="about">
+                        <p>
+                            Hi, I'm Christine, a software engineer based in the Philippines.
+                            I created this blog to organize my thoughts, share my 
+                            experiences and interests in various stuffs from 
+                            programming to arts, music, books, and so on.
+                        </p>
+                        <p>Thanks for visiting and hope you enjoy your time here. :)</p>
+                    </div>
+
+                    <div id="search">
+                        <form method="get" class="form-inline">
+                            <div class="form-group">
+                                {{ search_form.query }}
+                            </div>
+                            <input type="submit" value="Search" class="btn btn-primary">
+                        </form>
+                    </div> 
+                    
+                    <div id="latest-posts">
+                        <h2>Latest posts</h2>
+                        {% show_latest_posts %} 
+                    </div>
+
+                    <div id="archives">
+                        <h2>Archives</h2>
+                        {% show_archives %}
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% block script %} {% endblock script %}
+</body>
+</html>

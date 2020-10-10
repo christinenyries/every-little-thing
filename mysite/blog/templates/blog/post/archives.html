@@ -1,0 +1,7 @@
+<ul class="list-unstyled">
+    {% for date in dates %}
+        <li>
+            <a href="{% url 'blog:post_list_by_date' date.year date.month %}">{{ date|date:"Y F" }}</a>
+        </li>
+    {% endfor %}
+</ul>

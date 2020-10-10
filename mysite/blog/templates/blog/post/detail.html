@@ -1,0 +1,76 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock title %}
+
+{% block content %}
+    {% if messages %}
+        <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message|safe }}
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+
+    <h1>{{ post.title }}</h1>
+    <p class="date">
+        Published on {{ post.publish }}
+    </p>
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid mb-4">
+    {% endif %}
+    {{ post.body|markdown }}
+
+    {% include "blog/post/tags.html" %}
+
+    <div id="similar-posts">
+        <h2>Similar posts</h2>
+        {% for post in similar_posts %}
+            <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
+        {% empty %}
+            No similar posts yet.
+        {% endfor %}
+    </div>
+
+    <div id="comments">
+        {% with comments.count as total_comments %}
+            <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
+        {% endwith %}
+        
+        {% for comment in comments %}
+            <div class="comment">
+                <p class="date">
+                    Commented on {{ comment.created }} by {{ comment.name }}
+                </p>
+                {{ comment.body|linebreaks }}
+            </div>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+        
+        {% if not new_comment %}
+            <h2>Add a new comment</h2>
+            <form method="post">
+                <div class="form-group">
+                    <label for="id_name">Name</label>
+                    {{ comment_form.name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_email">Email</label>
+                    {{ comment_form.email }}
+                </div>
+                <div class="form-group">
+                    <label for="id_body">Body</label>
+                    {{ comment_form.body }}
+                </div>
+                {% csrf_token %}
+                <input type="submit" value="Add comment" class="btn btn-primary">
+            </form>
+        {% endif %}
+    </div>
+
+{% endblock content %}

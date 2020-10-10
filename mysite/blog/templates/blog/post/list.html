@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}
+    Every Little Thing{% if tag %} | {{ tag.name }}{% endif %}
+{% endblock title %}
+
+{% block content %}
+    {% if date %}
+        <h1>Posts published on "{{ date|date:"M Y" }}"
+    {% elif tag %}
+        <h1>Posts tagged with "{{ tag.name }}"
+    {% else %}
+        <h1>All posts in this blog
+    {% endif %}
+
+    {% if query %} that contains "{{ query }}"{% endif %}</h1>
+
+    {% if tag or query %}
+        <h3> Found {{ total_results }} result{{ total_results|pluralize }} </h3>
+    {% endif %}
+
+    <div id="post-list">
+        {% include "blog/post/list_ajax.html" %}
+    </div>
+{% endblock content %}
+
+{% block script %}
+    <script src={% static 'blog/js/scroll.js' %}></script>
+{% endblock script %}
+

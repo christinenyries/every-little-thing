@@ -1,0 +1,1 @@
+2020/10/10 08:59:35 [error] 6313#6313: *29 connect() to unix:///tmp/mysite.sock failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, server: www.mysiteproject.com, request: "GET / HTTP/1.1", upstream: "uwsgi://unix:///tmp/mysite.sock:", host: "mysiteproject.com"
