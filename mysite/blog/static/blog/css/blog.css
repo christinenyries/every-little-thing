@@ -24,6 +24,8 @@ body {
 
 #content p {
     text-align: justify;
+    line-height: 1.6;
+    font-size: 18px;
 }
 
 #similar-posts {
@@ -40,18 +42,12 @@ body {
     margin-bottom: 50px;
 }
 
-#search .form-group{
-    width: 70%;
-    max-width: 300px;
-    padding-right: 2px;
-}
-
-#search .form-control {
-    width: 100%;
+#search #id_query {
+   margin-right: 5px; 
+   width: 78%;
 }
 
 #search .btn {
     width: 20%;
-    min-width: 80px;
-    float: right;
+    min-width: 55px;
 }
