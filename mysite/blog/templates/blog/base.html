@@ -10,40 +10,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Trirong' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
 </head>
 <body>
-    <div id="header">
-        <nav class="navbar navbar-light bg-light">
+    <nav id="header" class="navbar navbar-dark fixed-top flex-column d-inline">
+        <div class="container flex-row justify-content-start">
             <a class="navbar-brand" href="{% url 'blog:post_list' %}">
-                Every Little Thing
+                <img id="logo" class="d-inline" src="{% static 'blog/img/logo.png' %}" alt="Logo">
             </a>
-        </nav>
-    </div>
-    <div id="content" class="container-fluid">
-        <div class="row">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-5">
+        </div>
+    </nav>
+    <div id="content" class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-11 col-lg-8">
                 {% block content %} {% endblock content %} 
             </div>
-            <div class="col-lg-3">
+            <aside class="col-md-7 col-lg-4">
                 <div id="sidebar">
-                    <div id="about">
-                        <p>
-                            Hello, I'm Christine and welcome to <span class="font-weight-bold">Every Little Thing</span>,
-                            a personal blog I created to share my programming journey
-                            (and some non-programming hobbies as well).
-                        </p>
-                        <p>
-                            In this blog, I'll talk about the programming languages and frameworks I'm
-                            studying (currently Python/Django), the learning resources I've 
-                            stumbled upon, some cool tips and tricks I got along the way, 
-                            and even the errors that mystified me.
-                        </p>
-                        <p>
-                            Thanks for visiting and hope you enjoy your time here. \(^_^)/
-                        </p>
-                    </div>
 
                     <div id="search">
                         <form method="get" class="form-inline">
@@ -51,17 +35,29 @@
                             <input type="submit" value="Search" class="btn btn-primary">
                         </form>
                     </div> 
-                    
+
+                    <div id="about">
+                        <h2>About this site</h2>
+                        <p>
+                            Hello, I'm Christine and welcome to <span class="font-weight-italic">Every Little Thing</span>,
+                            a personal blog I created to share my programming journey
+                            (and some non-programming hobbies as well).
+                        </p>
+                        <p>
+                            Thanks for visiting and hope you enjoy your time here. \(^_^)/
+                        </p>
+                    </div>
+
                     <div id="latest-posts">
                         <h2>Latest posts</h2>
                         {% show_latest_posts %} 
                     </div>
-
+                    
                     <div id="archives">
                         <h2>Archives</h2>
                         {% show_archives %}
                     </div>
-            </div>
+            </aside>
         </div>
     </div>
 

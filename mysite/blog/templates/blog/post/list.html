@@ -6,21 +6,22 @@
 {% endblock title %}
 
 {% block content %}
+    <h2 class="mb-4">
     {% if date %}
-        <h1>Posts published on "{{ date|date:"M Y" }}"
+        Posts published on "{{ date|date:"M Y" }}"
     {% elif tag %}
-        <h1>Posts tagged with "{{ tag.name }}"
+        Posts tagged with "{{ tag.name }}"
     {% else %}
-        <h1>All posts in this blog
+        All posts in this blog
     {% endif %}
 
-    {% if query %} that contains "{{ query }}"{% endif %}</h1>
+    {% if query %} that contains "{{ query }}"{% endif %}</h2>
 
     {% if tag or query %}
-        <h3> Found {{ total_results }} result{{ total_results|pluralize }} </h3>
+        <h4> Found {{ total_results }} result{{ total_results|pluralize }} </h4>
     {% endif %}
 
-    <div id="post-list">
+    <div id="post-list" class="mb-5">
         {% include "blog/post/list_ajax.html" %}
     </div>
 {% endblock content %}

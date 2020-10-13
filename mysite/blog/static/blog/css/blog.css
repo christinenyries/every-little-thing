@@ -1,9 +1,20 @@
 body {
     font-family: Rubik, sans-serif;
+    font-size: 1.125rem;
+    text-shadow:0 0 1px transparent;
+}
+
+.navbar {
+    background-color: #808077;
+    height: 100px;
+}
+
+#logo {
+    height: 150px;
 }
 
 #content {
-    margin-top: 100px;
+    margin-top: 300px;
     margin-bottom: 100px;
 }
 
@@ -13,7 +24,8 @@ body {
 
 #content h1, 
 #content h2,
-#content h3 {
+#content h3,
+#content h4 {
     font-family: Trirong, sans-serif; 
 }
 
@@ -25,7 +37,6 @@ body {
 #content p {
     text-align: justify;
     line-height: 1.6;
-    font-size: 18px;
 }
 
 #similar-posts {
@@ -38,16 +49,14 @@ body {
 }
 
 #search {
-    margin-top: 25px;
     margin-bottom: 50px;
 }
 
 #search #id_query {
-   margin-right: 5px; 
-   width: 78%;
+    margin-right: 5px;
 }
 
-#search .btn {
-    width: 20%;
-    min-width: 55px;
+.tags .badge-custom {
+    background-color: #edf3e9;
+    color: #808077;
 }
