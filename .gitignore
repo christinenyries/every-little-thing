@@ -132,4 +132,3 @@ dmypy.json
 mysite/.vscode/
 mysite/logs/
 mysite/media
-mysite/mysite/settings/pro.py
