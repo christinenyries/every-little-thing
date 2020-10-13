@@ -40,6 +40,7 @@ class SearchForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
+                "placeholder": "Search",
             }
         )
     )
