@@ -190,12 +190,34 @@ class PostListViewTests(TestCase):
         """
         If query doesn't match any posts, an appropriate message is displayed.
         """
+        create_post("Some Post", days=-1)
+
+        response = self.client.get(
+            reverse("blog:post_list"),
+            {"query": "qwe"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Found 0 results")
 
     def test_query_posts_with_results(self):
         """
         Display posts that matched with the query.
         """
-        pass
+        create_post("Some Post", days=-1)
+
+        response = self.client.get(
+            reverse("blog:post_list"),
+            {"query": "some"},
+        )
+
+        self.assertContains(response, "Found 1 result")
+        self.assertQuerysetEqual(
+            response.context.get("posts"),
+            [
+                "<Post: Some Post>",
+            ],
+        )
 
     def test_post_displayed_with_tags(self):
         """
