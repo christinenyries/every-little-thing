@@ -20,12 +20,14 @@
     <p class="date">
         Published on {{ post.publish }}
     </p>
+
+    {% include "blog/post/tags.html" %}
+    
     {% if post.image %}
         <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid mb-4">
     {% endif %}
     {{ post.body|markdown }}
 
-    {% include "blog/post/tags.html" %}
 
     <div id="similar-posts">
         <h2>Similar posts</h2>
