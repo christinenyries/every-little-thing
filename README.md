@@ -1,3 +1,3 @@
 # every-little-thing
-An attempt to create my own personal blog.
-You can check the actual blog [here](https://nyries.pythonanywhere.com/).
+Personal blog created with Python/Django and PostgreSQL.
+Click [here](https://nyries.pythonanywhere.com/) to see actual website.
